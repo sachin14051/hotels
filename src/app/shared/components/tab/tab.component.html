@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row  mb-5" *ngFor="let s of stayArray; index as i">
+        <div class="col-md-5" >
+            <div class="imgcontainer d-flex align-items-center" >
+                <img [src]="stayArray[i].photo" alt="house" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card" >
+                <div class="card-header" [ngClass]="{
+                    'bg-dark' : (i+1) % 2 === 0,
+                    'text-white' :(i+1) % 2 === 0,
+                    'bg-warning' : (i+1) % 2 !== 0,
+                    'text-light' :(i+1) % 2 !== 0
+
+
+                }">
+                    <h3>Name : {{s.name}}</h3>
+                   <a href="javascript:;">Address : {{s.city}} , {{s.state}}</a> 
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group pl-3" >
+                        <li [ngClass]="{
+                            'text-danger' : s.availableUnits <= 0,
+                            'text-success' : s.availableUnits < 4,
+                            'bg-success' : s.availableUnits > 8
+
+
+                        
+                        }">
+                           AvailableUnits :   {{s.availableUnits}}
+                        </li>
+                        <li [ngClass]="{
+                            'text-danger' : s.laundry === false,
+                            'text-white' : s.laundry === false,
+                            'text-success' : s.laundry === true
+
+
+                        }">
+                            Laundry: {{s.laundry}}
+                        </li>
+                        <li
+                        [ngClass]="{
+                            'text-success' :s.wifi === true,
+                            'text-danger' :s.wifi === false
+
+                        }">
+                            Wifi : {{s.wifi}}
+                        </li>
+                        <li>
+                           Id: {{s.id+1}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
